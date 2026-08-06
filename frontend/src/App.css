@@ -1,0 +1,316 @@
+/* =========================================
+   GLOBAL ATMOSPHERE (The Dark Alleyway)
+========================================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  /* A radial gradient that mimics a desk lamp in a dark room */
+  background: radial-gradient(circle at 50% 30%, #2a2a35 0%, #0a0a0c 80%, #000000 100%);
+  color: #c4c4c4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================================
+   CONTAINERS (The Desks)
+========================================= */
+.auth-container, 
+.history-container, 
+.chat-container {
+  width: 100%;
+  max-width: 650px;
+  background: rgba(18, 18, 20, 0.85); /* Slightly transparent */
+  border: 1px solid #333;
+  border-radius: 6px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(212, 175, 55, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.auth-container, .history-container {
+  padding: 40px;
+}
+
+.chat-container {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   TYPOGRAPHY & HEADERS
+========================================= */
+h2, .chat-header {
+  color: #d4af37; /* Faded Brass / Detective Badge Gold */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  margin-top: 0;
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 15px;
+}
+
+.chat-header {
+  background: #0d0d0f;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  position: relative;
+}
+
+/* =========================================
+   INPUTS & BUTTONS (The Typewriter)
+========================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input {
+  padding: 15px;
+  background: #111;
+  border: 1px solid #333;
+  border-left: 3px solid #d4af37; /* Gold accent line */
+  color: #eaeaea;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input:focus {
+  background: #1a1a1e;
+  border-color: #555;
+  border-left: 3px solid #ffcc00;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.2s ease;
+}
+
+.action-btn {
+  padding: 15px;
+  background: linear-gradient(135deg, #d4af37, #9b7d23);
+  color: #111;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+.action-btn:hover {
+  background: linear-gradient(135deg, #ffcc00, #b8952a);
+  transform: translateY(-2px);
+}
+
+.toggle-auth {
+  text-align: center;
+  margin-top: 25px;
+  color: #777;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.toggle-auth:hover {
+  color: #d4af37;
+  text-decoration: underline;
+}
+
+/* =========================================
+   FILING CABINET (History Page)
+========================================= */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.logout-btn {
+  background: transparent;
+  color: #a33;
+  border: 1px solid #a33;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.logout-btn:hover {
+  background: #a33;
+  color: #fff;
+}
+
+.case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Scrollbar styling for a sleeker look */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  background: #18181c;
+  padding: 20px;
+  border: 1px solid #222;
+  border-left: 4px solid #4a5d6e; /* Police blue accent */
+  text-decoration: none;
+  color: #d1d1d1;
+  transition: all 0.2s ease;
+}
+
+.case-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #eee;
+}
+
+.case-card:hover {
+  background: #222228;
+  border-left-color: #d4af37; /* Turns gold on hover */
+  transform: translateX(5px);
+}
+
+.new-case {
+  background: #202a35;
+  border-left: 4px solid #3b82f6;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.new-case:hover {
+  background: #2a3b4c;
+  border-left-color: #60a5fa;
+}
+
+/* =========================================
+   CHAT ROOM (The Interrogation)
+========================================= */
+.back-btn {
+  color: #777;
+  text-decoration: none;
+  position: absolute;
+  left: 20px;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #d4af37;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.message-wrapper.user {
+  justify-content: flex-end;
+}
+
+.message-wrapper.cipher {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 85%;
+  padding: 15px 20px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  text-align: left;         /* FIXES the center-aligned text from the screenshot */
+  white-space: pre-wrap;    /* Preserves paragraph breaks from Ollama */
+}
+
+/* User's typed notes */
+.user .message-bubble {
+  background: #2b3a4a;
+  color: #fff;
+  border-right: 3px solid #6b8eb0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* Cipher's case files */
+.cipher .message-bubble {
+  background: #151518;
+  color: #b5b5b5;
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid #d4af37;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.chat-input-area {
+  display: flex;
+  flex-direction: row; /* Overrides the column layout of the form */
+  padding: 20px;
+  background: #0d0d0f;
+  border-top: 1px solid #222;
+  gap: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  border-left: 1px solid #333; /* Remove gold line from chat input */
+  margin-bottom: 0;
+}
+
+.chat-input-area input:focus {
+  border-color: #555;
+}
+
+.chat-input-area button {
+  padding: 0 25px;
+  background: #222;
+  color: #d4af37;
+  border: 1px solid #444;
+  font-weight: bold;
+}
+
+.chat-input-area button:hover {
+  background: #333;
+  border-color: #d4af37;
+}
